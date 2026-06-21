@@ -6,7 +6,19 @@ export type WindowId =
   | 'resume'
   | 'readme'
   | 'contact'
+  | 'skills'
+  | 'experience'
   | `project-${string}`;
+
+export const WINDOW_CONFIG: Record<WindowId, { title: string; defaultSize: { width: number; height: number }; minSize: { width: number; height: number } }> = {
+  about:      { title: 'About Me',              defaultSize: { width: 560, height: 420 }, minSize: { width: 400, height: 300 } },
+  projects:   { title: 'Projects — ~/',         defaultSize: { width: 720, height: 540 }, minSize: { width: 500, height: 400 } },
+  resume:     { title: 'Resume.pdf',            defaultSize: { width: 680, height: 800 }, minSize: { width: 400, height: 500 } },
+  readme:     { title: 'README.md',             defaultSize: { width: 640, height: 500 }, minSize: { width: 400, height: 300 } },
+  contact:    { title: 'New Message',           defaultSize: { width: 480, height: 540 }, minSize: { width: 360, height: 480 } },
+  skills:     { title: 'Terminal — skills.sh',  defaultSize: { width: 600, height: 450 }, minSize: { width: 450, height: 300 } },
+  experience: { title: 'experience.log',        defaultSize: { width: 640, height: 500 }, minSize: { width: 400, height: 300 } },
+};
 
 interface WindowState {
   id: WindowId;
@@ -32,8 +44,16 @@ interface WindowStore {
 const DEFAULT_Z = 10;
 
 export const useWindowStore = create<WindowStore>((set, get) => ({
-  windows: {},
-  topZIndex: DEFAULT_Z,
+  windows: {
+    about: {
+      id: 'about',
+      isOpen: true,
+      isMinimized: false,
+      isFocused: true,
+      zIndex: DEFAULT_Z + 1,
+    },
+  },
+  topZIndex: DEFAULT_Z + 1,
 
   openWindow: (id) => {
     const { windows, topZIndex } = get();

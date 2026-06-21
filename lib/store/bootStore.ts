@@ -1,5 +1,4 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
 
 interface BootStore {
   hasBooted: boolean;
@@ -7,15 +6,8 @@ interface BootStore {
   resetBoot: () => void;
 }
 
-export const useBootStore = create<BootStore>()(
-  persist(
-    (set) => ({
-      hasBooted: false,
-      bootComplete: () => set({ hasBooted: true }),
-      resetBoot: () => set({ hasBooted: false }),
-    }),
-    {
-      name: 'pinakos_booted',
-    }
-  )
-);
+export const useBootStore = create<BootStore>((set) => ({
+  hasBooted: false,
+  bootComplete: () => set({ hasBooted: true }),
+  resetBoot: () => set({ hasBooted: false }),
+}));
