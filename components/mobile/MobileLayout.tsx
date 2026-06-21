@@ -43,7 +43,7 @@ function MobileAbout() {
       <div className="mobile-card">
         <div className="mobile-about-avatar">
           <Image
-            src="/pfp.png"
+            src="/about_me_photo.png"
             alt="Pinaki Auddy"
             fill
             sizes="56px"
