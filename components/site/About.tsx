@@ -10,13 +10,15 @@ export default function About() {
           </h2>
         </div>
         <div className="about__main">
-          <p className="about__para" data-reveal style={{ '--i': 1 } as React.CSSProperties}>
-            I’m a final-year computer science student who designs an interface and then builds it. I’ve taken an AI
-            campaign CRM, a compliance planner for truck drivers, an ERP now in daily use and a non-profit’s website from a
-            blank canvas to a working product, so I make design decisions knowing what they cost to build.
+          <p className="about__lede" data-reveal style={{ '--i': 1 } as React.CSSProperties}>
+            Most of what I’ve built started with someone who isn’t technical.
           </p>
-          <p className="about__para about__para--second" data-reveal style={{ '--i': 2 } as React.CSSProperties}>
-            My name comes from Pinaka, the bow of Shiva. I take the hint: aim carefully, then let go.
+          <p className="about__para" data-reveal style={{ '--i': 2 } as React.CSSProperties}>
+            A business on paper registers, a non-profit speaking to donors, truck drivers juggling federal driving rules.
+            I learn how their day actually works, then design and build screens they understand without a tutorial.
+          </p>
+          <p className="about__para" data-reveal style={{ '--i': 3 } as React.CSSProperties}>
+            The ERP I built for Global Water Solutions is now used every day. Next, I want to make AI feel this simple.
           </p>
         </div>
       </div>

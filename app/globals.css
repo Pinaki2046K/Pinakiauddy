@@ -464,8 +464,15 @@ textarea.field { resize: vertical; }
 .about__row--record { margin-top: clamp(4rem, 8vw, 7rem); }
 .about__row--record > .about__word { grid-column: 1 / 5; }
 .about__row--record > .record { grid-column: 5 / 13; }
-.about__para { font-size: var(--step-lead); line-height: 1.45; max-width: 40em; }
-.about__para--second { margin-top: 1.25em; color: var(--muted); }
+.about__lede {
+  font-size: clamp(1.75rem, 1.2rem + 1.6vw, 2.5rem);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  max-width: 24ch;
+}
+.about__para { margin-top: 1.25em; font-size: var(--step-lead); line-height: 1.5; max-width: 38em; }
+.about__lede + .about__para { margin-top: 1.75rem; }
 .about__word { font-size: var(--step-lead); font-weight: 700; letter-spacing: -0.01em; }
 .record { display: grid; column-gap: 3rem; row-gap: 2.5rem; }
 .record--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -628,6 +635,7 @@ textarea.field { resize: vertical; }
   .js [data-reveal].is-in { opacity: 1; transform: none; }
 }
 @keyframes rise { to { opacity: 1; transform: none; } }
+
 
 
 
