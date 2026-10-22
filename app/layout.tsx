@@ -1,47 +1,45 @@
 import type { Metadata } from 'next';
-import { JetBrains_Mono, Inter } from 'next/font/google';
+import localFont from 'next/font/local';
 import './globals.css';
 
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  variable: '--font-mono',
-  weight: ['400', '500'],
+const generalSans = localFont({
+  src: [
+    { path: './fonts/GeneralSans-Regular.woff2', weight: '400', style: 'normal' },
+    { path: './fonts/GeneralSans-Medium.woff2', weight: '500', style: 'normal' },
+    { path: './fonts/GeneralSans-Bold.woff2', weight: '700', style: 'normal' },
+  ],
+  variable: '--font-sans',
   display: 'swap',
 });
 
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-sans',
-  weight: ['400', '500', '600'],
-  display: 'swap',
-});
+const description =
+  'Pinaki Auddy, product designer and engineer in the final year of a computer science degree. Designing AI-powered interfaces and building them until they ship.';
 
 export const metadata: Metadata = {
-  title: 'PinakaOS — Pinaki Auddy',
-  description:
-    'Portfolio of Pinaki Auddy — final-year CSE student, full-stack engineer, and AI-native product builder. Themed as PinakaOS, a fictional desktop operating system.',
-  keywords: ['Pinaki Auddy', 'portfolio', 'full-stack', 'Next.js', 'AI', 'CSE', 'developer'],
+  metadataBase: new URL('https://pinakiauddy.vercel.app'),
+  title: 'Pinaki Auddy · Product design and AI',
+  description,
+  keywords: ['Pinaki Auddy', 'portfolio', 'UI/UX design', 'product design', 'AI design', 'AI generalist', 'interface design', 'Next.js'],
   authors: [{ name: 'Pinaki Auddy' }],
   openGraph: {
-    title: 'PinakaOS — Pinaki Auddy',
-    description: 'Portfolio of Pinaki Auddy — full-stack engineer and AI-native product builder.',
+    title: 'Pinaki Auddy · Product design and AI',
+    description,
     type: 'website',
+    images: ['/portrait.jpg'],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'PinakaOS — Pinaki Auddy',
-    description: 'Portfolio of Pinaki Auddy — full-stack engineer and AI-native product builder.',
+    title: 'Pinaki Auddy · Product design and AI',
+    description,
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${jetbrainsMono.variable} ${inter.variable}`}>
+    <html lang="en" className={generalSans.variable} suppressHydrationWarning>
       <body>
+        {/* Motion states only hide content once we know scripting works */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
         {children}
       </body>
     </html>

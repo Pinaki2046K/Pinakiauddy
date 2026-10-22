@@ -1,65 +1,45 @@
-# PinakaOS — Developer Portfolio
+# Pinaki Auddy — Portfolio
 
-> *"Pinaka" — Shiva's bow. Precision, pull, and the knowledge of when to release.*
+Portfolio of Pinaki Auddy, product designer and engineer, live at **[pinakiauddy.vercel.app](https://pinakiauddy.vercel.app)**.
 
-A uniquely designed, OS-inspired developer portfolio built to showcase engineering mindset, architecture decisions, and full-stack capabilities, rather than just displaying a list of project links.
+It presents six products I designed and built end to end, each with its own case study page covering the problem, who it is for, the design decisions behind it and the outcome:
 
-![PinakaOS Interface](./public/bow.png)
+- **FleetLog**: a trip planner that turns a route and a driver's hours into a plan that follows US Hours of Service rules, with a daily log sheet for every day of the trip
+- **GWS ERP**: an ERP that replaced a paper-based workflow for a water-purification service business, now in daily use
+- **ARIA**: an AI-powered CRM for planning and running customer campaigns
+- **VibeCheck**: event ticketing with booking flows and an organiser dashboard
+- **VickyBytes Live**: a live-event streaming interface
+- **KET India**: the website of Khodiyar Education Trust, a non-profit in Mehsana
 
-## 🌟 Philosophy
+## Built with
 
-Most portfolio websites trend toward the same format: clean cards, project thumbnails, and a PDF link. While legible, it often fails to convey *how* an engineer thinks. 
+- [Next.js](https://nextjs.org) (App Router), React and TypeScript
+- Plain CSS with design tokens, set in [General Sans](https://www.fontshare.com/fonts/general-sans) loaded through `next/font/local`
+- Case study pages generated statically from `lib/data/projects.ts`
+- Contact form through [Web3Forms](https://web3forms.com)
+- Deployed on [Vercel](https://vercel.com)
 
-**PinakaOS** was built with a different philosophy:
-- **Architecture over Aesthetics:** The operating system metaphor isn't just decoration. It forced constraints requiring state management, z-index stacking, responsive fallbacks, and accessibility handling.
-- **Context over Demos:** Projects are documented with their architectural tradeoffs, constraints, and the *why* behind deployment decisions, providing a stronger signal than just a live Vercel URL.
-- **Mobile First (Paradigm Shift):** Instead of cramming a desktop OS into a 6-inch screen, the application features a bespoke `@media` query layout shift, delivering a native-feeling mobile app experience on smaller devices.
+## Project structure
 
-## 🚀 Tech Stack
+```
+app/
+  page.tsx              Home: hero, selected work, what I do, about, contact
+  work/[slug]/page.tsx  One case study page per project
+  globals.css           All styles and design tokens
+components/site/        Page sections and shared pieces
+lib/data/
+  projects.ts           Projects, screenshots and case study content
+  profile.ts            Facts, experience, recognition, toolkit and capabilities
+public/                 Portrait, résumé and project screenshots
+```
 
-- **Framework:** [Next.js 14](https://nextjs.org/) (App Router)
-- **Language:** [TypeScript](https://www.typescriptlang.org/)
-- **Styling:** Vanilla CSS (CSS Modules & Globals)
-- **State Management:** [Zustand](https://github.com/pmndrs/zustand)
-- **Animations:** [Framer Motion](https://www.framer.com/motion/)
-- **Window Management:** [react-rnd](https://github.com/bokuweb/react-rnd)
-- **Forms API:** [Web3Forms](https://web3forms.com/)
-- **Typography:** JetBrains Mono + Inter
+To add or edit a project, change `lib/data/projects.ts`; its case study page is generated from that entry.
 
-## ⚙️ Key Features
+## Running locally
 
-- **Draggable Window Manager:** Fully interactive windows that can be dragged, resized, minimized to the dock, maximized, and focused (with proper z-index management).
-- **Interactive Terminal:** A fully functional mock terminal for exploring technical skills via command-line interface.
-- **Markdown Renderer:** Custom `react-markdown` implementation for displaying rich README content directly in the UI.
-- **Boot Sequence:** A heavily optimized, terminal-style boot-up animation.
-- **Web3Forms Integration:** Fully functional contact form that delivers messages directly to email.
+```bash
+npm install
+npm run dev
+```
 
-## 🛠️ Local Development
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Pinaki2046K/Portfolio.git
-   cd Portfolio
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Start the development server**
-   ```bash
-   npm run dev
-   ```
-
-4. **Open the app**
-   Navigate to [http://localhost:3000](http://localhost:3000) in your browser.
-
-## 📫 Contact
-
-- **Email:** [pinakiauddy49@gmail.com](mailto:pinakiauddy49@gmail.com)
-- **LinkedIn:** [pinaki-auddy](https://www.linkedin.com/in/pinaki-auddy/)
-- **GitHub:** [Pinaki2046K](https://github.com/Pinaki2046K)
-
----
-*Built with precision and care by Pinaki Auddy.*
+Then open [http://localhost:3000](http://localhost:3000).
