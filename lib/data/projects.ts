@@ -54,8 +54,8 @@ export const PROJECTS: Project[] = [
     githubUrl: 'https://github.com/Pinaki2046K/spotter-eld-truck',
     screens: [
       { src: '/work/fleetlog-1.jpg', alt: 'FleetLog trip form: current, pickup and dropoff locations and the hours already used this cycle', width: 1440, height: 900 },
-      { src: '/work/fleetlog-plan.jpg', alt: 'FleetLog trip plan from Chicago to Denver: totals, hours-of-service limits, the required stops and the route map', width: 2880, height: 2360 },
-      { src: '/work/fleetlog-log.jpg', alt: 'FleetLog daily log sheet with the duty-status graph, total hours and remarks for each stop', width: 2880, height: 1800 },
+      { src: '/work/fleetlog-plan.jpg', alt: 'FleetLog trip plan from Chicago to Denver: totals, hours-of-service limits, the required stops and the route map', width: 2048, height: 1678 },
+      { src: '/work/fleetlog-log.jpg', alt: 'FleetLog daily log sheet with the duty-status graph, total hours and remarks for each stop', width: 2048, height: 1280 },
     ],
     cover: 1,
     story: {

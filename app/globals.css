@@ -35,6 +35,8 @@
   --t-press: 140ms;
   --t-hover: 200ms;
   --t-ui: 300ms;
+  --t-expand: 280ms;
+  --t-collapse: 200ms;
   --t-reveal: 800ms;
 }
 
@@ -42,6 +44,8 @@
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; background: var(--bg); scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+/* Lenis drives scrolling once it starts; native smooth scrolling would fight it */
+html.lenis { scroll-behavior: auto; }
 html:has(dialog[open]) { overflow: hidden; }
 body {
   margin: 0;
@@ -62,7 +66,8 @@ button, input, textarea { font: inherit; color: inherit; }
 button { background: none; border: 0; padding: 0; cursor: pointer; }
 a { color: inherit; }
 p { text-wrap: pretty; }
-:target { scroll-margin-top: 5rem; }
+/* Sections linked from the top bar stop just below it, however the page gets there */
+[id] { scroll-margin-top: 4.5rem; }
 ::selection { background: var(--accent); color: var(--accent-ink); }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .nowrap { white-space: nowrap; }
@@ -396,9 +401,16 @@ textarea.field { resize: vertical; }
   object-fit: cover;
   object-position: 0 0;
   opacity: 0;
-  transition: opacity var(--t-ui) ease;
+  transform: scale(1.03);
 }
-.caps__media img.is-active { opacity: 1; }
+/* The new screen fades in over the old one, which stays fully visible underneath: no dimmed midpoint */
+.caps__media img.is-previous { z-index: 1; opacity: 1; transform: none; }
+.caps__media img.is-active {
+  z-index: 2;
+  opacity: 1;
+  transform: none;
+  transition: opacity 420ms var(--ease-out), transform 700ms var(--ease-out);
+}
 .caps__body { grid-column: 7 / 13; grid-row: 2; }
 .caps__row { padding-block: 0.25rem; }
 .caps__trigger {
@@ -419,10 +431,28 @@ textarea.field { resize: vertical; }
 @media (hover: hover) and (pointer: fine) {
   .caps__trigger:hover { color: var(--ink); }
 }
-.caps__detail { display: grid; grid-template-rows: 0fr; transition: grid-template-rows var(--t-ui) var(--ease-out); }
+.caps__detail { display: grid; grid-template-rows: 0fr; transition: grid-template-rows var(--t-collapse) var(--ease-out); }
 .caps__detail > div { overflow: hidden; }
-.caps__detail p { max-width: 42ch; padding-bottom: 1rem; }
-.caps__row.is-active .caps__detail { grid-template-rows: 1fr; }
+.caps__detail p {
+  max-width: 42ch;
+  padding-bottom: 1rem;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 140ms ease, transform var(--t-collapse) var(--ease-out);
+}
+/* Opening is a touch slower than closing, and the text arrives just after the space opens */
+.caps__row.is-active .caps__detail { grid-template-rows: 1fr; transition-duration: var(--t-expand); }
+.caps__row.is-active .caps__detail p {
+  opacity: 1;
+  transform: none;
+  transition: opacity 240ms var(--ease-out) 60ms, transform var(--t-expand) var(--ease-out) 60ms;
+}
+@media (prefers-reduced-motion: reduce) {
+  /* Keep the fades, drop the movement */
+  .caps__media img, .caps__media img.is-active { transform: none; transition: opacity 200ms ease; }
+  .caps__detail, .caps__row.is-active .caps__detail { transition: none; }
+  .caps__detail p, .caps__row.is-active .caps__detail p { transform: none; transition: opacity 200ms ease; }
+}
 
 /* ============================================================
    About
@@ -598,3 +628,6 @@ textarea.field { resize: vertical; }
   .js [data-reveal].is-in { opacity: 1; transform: none; }
 }
 @keyframes rise { to { opacity: 1; transform: none; } }
+
+
+

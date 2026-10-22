@@ -94,7 +94,7 @@ export const CAPABILITIES = [
     name: 'Rules made usable',
     where: 'FleetLog',
     text: 'Turning dense regulations into a simple form and a plan anyone can trust, backed by an engine that is tested case by case.',
-    image: { src: '/work/fleetlog-log.jpg', alt: 'FleetLog daily log sheet', width: 2880, height: 1800 },
+    image: { src: '/work/fleetlog-log.jpg', alt: 'FleetLog daily log sheet', width: 2048, height: 1280 },
   },
   {
     name: 'Design that ships',

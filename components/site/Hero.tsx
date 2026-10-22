@@ -34,13 +34,14 @@ export default function Hero() {
           </dl>
         </div>
 
-        <figure className="hero__portrait" data-rise style={{ '--i': 1 } as React.CSSProperties}>
+        <figure className="hero__portrait">
           <Image
             src="/portrait.jpg"
             alt="Portrait of Pinaki Auddy"
             fill
-            priority
-            sizes="(max-width: 800px) 100vw, 36vw"
+            loading="eager"
+            fetchPriority="high"
+            sizes="(max-width: 960px) 9rem, 30vw"
           />
         </figure>
       </section>

@@ -1,13 +1,12 @@
 import Link from 'next/link';
 import { PROFILE } from '@/lib/data/profile';
+import Wordmark from './Wordmark';
 
 /** The top bar shared by the home page and every case study. Section links point at the home page. */
 export default function SiteBar() {
   return (
     <header className="bar">
-      <Link className="bar__mark" href="/">
-        Pinaki Auddy
-      </Link>
+      <Wordmark />
       <nav className="bar__nav" aria-label="Main">
         <Link href="/#work">Work</Link>
         <Link href="/#services">What I do</Link>

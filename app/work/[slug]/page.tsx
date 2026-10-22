@@ -108,7 +108,8 @@ export default async function CaseStudyPage(props: PageProps<'/work/[slug]'>) {
                   height={screen.height}
                   sizes="(max-width: 1100px) 100vw, 1024px"
                   quality={90}
-                  priority={i === 0}
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                  fetchPriority={i === 0 ? 'high' : 'auto'}
                 />
                 <figcaption>{screen.alt}</figcaption>
               </figure>

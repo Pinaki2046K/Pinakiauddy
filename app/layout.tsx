@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
+import SmoothScroll from '@/components/site/SmoothScroll';
 
 const generalSans = localFont({
   src: [
@@ -34,13 +35,18 @@ export const metadata: Metadata = {
   },
 };
 
+const RELOAD_TO_TOP = "(function(){document.documentElement.classList.add('js');var n=performance.getEntriesByType('navigation')[0];if(!n||n.type!=='reload')return;if('scrollRestoration' in history)history.scrollRestoration='manual';if(location.hash)history.replaceState(history.state,'',location.pathname+location.search);window.scrollTo(0,0);addEventListener('load',function(){window.scrollTo(0,0);requestAnimationFrame(function(){history.scrollRestoration='auto';});});})();";
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={generalSans.variable} suppressHydrationWarning>
       <body>
-        {/* Motion states only hide content once we know scripting works */}
-        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+        {/* Before anything renders: mark that scripting works (motion states only hide content then), and on a
+            reload start at the top instead of where the browser left off. Only reloads: normal visits and the
+            Back button keep their usual scroll position. */}
+        <script dangerouslySetInnerHTML={{ __html: RELOAD_TO_TOP }} />
         {children}
+        <SmoothScroll />
       </body>
     </html>
   );
