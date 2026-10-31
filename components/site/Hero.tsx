@@ -20,7 +20,7 @@ export default function Hero() {
               See selected work
             </a>
             <a className="link-arrow" href="#contact">
-              Get in touch <span aria-hidden="true">→</span>
+              Get in touch
             </a>
           </div>
 

@@ -1,4 +1,7 @@
-/** A project's discipline line, e.g. "Rule-driven product · full-stack build". Each part stays on one line. */
+/**
+ * A project's discipline line. The data separates parts with " · "; on the page they read as a plain
+ * comma-separated phrase, e.g. "Rule-driven product, full-stack build". Each part stays on one line.
+ */
 export default function Discipline({ text }: { text: string }) {
   const parts = text.split(' · ');
   return (
@@ -6,7 +9,7 @@ export default function Discipline({ text }: { text: string }) {
       {parts.map((part, i) => (
         <span key={part}>
           <span className="meta-part">{part}</span>
-          {i < parts.length - 1 && ' · '}
+          {i < parts.length - 1 && ', '}
         </span>
       ))}
     </span>

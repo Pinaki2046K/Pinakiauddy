@@ -8,7 +8,7 @@ export const PROFILE = {
 };
 
 export const FACTS = [
-  { label: 'Studying', value: 'B.Tech CSE, Big Data Analytics, SRMIST · 9.48 CGPA' },
+  { label: 'Studying', value: 'B.Tech CSE, Big Data Analytics, SRMIST, 9.48 CGPA' },
   { label: 'Based in', value: 'Chennai, India' },
   { label: 'Looking for', value: 'AI Generalist and product design roles' },
 ];
@@ -16,13 +16,13 @@ export const FACTS = [
 export const EXPERIENCE = [
   {
     role: 'Software Development Intern',
-    org: 'NIT Hamirpur · Ministry of Education project',
+    org: 'NIT Hamirpur, Ministry of Education project',
     dates: 'Feb – Apr 2025',
     note: 'Integrated a Hugging Face image-classification model into a live e-waste reporting platform, turning its predictions into structured records, and designed the API workflows that send them to the nodal centre for reporting and evaluation.',
   },
   {
     role: 'Software Development Intern',
-    org: 'IFIA Bharat · Remote',
+    org: 'IFIA Bharat, remote',
     dates: 'Dec 2024 – Jan 2025',
     note: 'Led a four-person front-end team to deliver the organisation’s responsive website two months ahead of schedule, then tuned performance and SEO for an estimated 30%+ rise in traffic.',
   },
@@ -100,6 +100,6 @@ export const CAPABILITIES = [
     name: 'Design that ships',
     where: 'Next.js, TypeScript',
     text: 'I build what I design, so every decision is made knowing what it costs to build, and nothing is lost between the idea and the product.',
-    image: { src: '/work/vickybytes-2.jpg', alt: 'VickyBytes Live event grid', width: 1800, height: 1125 },
+    image: { src: '/work/gws-payments.jpg', alt: 'GWS ERP payments overview', width: 2000, height: 1291 },
   },
 ];

@@ -11,7 +11,7 @@ export default function Work() {
           Selected work
         </h2>
         <p className="section-intro" data-reveal style={{ '--i': 1 } as React.CSSProperties}>
-          Six products I designed and built end to end, from an AI campaign CRM to a non-profit’s website.
+          Five products I designed and built end to end, from an AI campaign CRM to a non-profit’s website.
         </p>
       </div>
 
@@ -52,7 +52,7 @@ export default function Work() {
                   {project.summary}
                 </p>
                 <p className="feature__stack" data-reveal style={{ '--i': 3 } as React.CSSProperties}>
-                  {project.stack.slice(0, 4).join(' · ')}
+                  {project.stack.slice(0, 4).join(', ')}
                 </p>
                 <div className="feature__actions" data-reveal style={{ '--i': 4 } as React.CSSProperties}>
                   <Link className="button" href={href}>
@@ -60,7 +60,7 @@ export default function Work() {
                   </Link>
                   {project.liveUrl && (
                     <a className="link-arrow" href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                      Live site <span aria-hidden="true">↗</span>
+                      Live site
                     </a>
                   )}
                 </div>

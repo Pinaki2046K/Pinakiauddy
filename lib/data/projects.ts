@@ -194,27 +194,6 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: 'vickybytes-live',
-    title: 'VickyBytes',
-    name: 'VickyBytes Live, event streaming',
-    discipline: 'Interface design · front-end build',
-    summary:
-      'A live-event streaming interface: what is on air now, a searchable schedule and a custom player, with a retro broadcast feel.',
-    description: [
-      'Built as a front-end engineering assignment, VickyBytes Live gathers music festivals, esports finals, tech keynotes and live talks in one place.',
-      'The interface leads with what is on air right now, then a dense, filterable event grid with live status on every card, set in a retro broadcast style over a modern Next.js App Router build.',
-    ],
-    contribution: ['Visual direction', 'Responsive event grid and live states', 'Front-end build'],
-    stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'App Router'],
-    status: 'deployed',
-    liveUrl: 'https://event-streaming-dusky.vercel.app',
-    githubUrl: 'https://github.com/Pinaki2046K',
-    screens: [
-      { src: '/work/vickybytes-1.jpg', alt: 'VickyBytes Live home with the on-air hero and live player', width: 1800, height: 1125 },
-      { src: '/work/vickybytes-2.jpg', alt: 'VickyBytes Live event grid with search, filters and live badges', width: 1800, height: 1125 },
-    ],
-  },
-  {
     id: 'ket-mehsana',
     title: 'KET India',
     name: 'KET Mehsana, NGO website',

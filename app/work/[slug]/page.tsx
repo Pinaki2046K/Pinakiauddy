@@ -35,7 +35,7 @@ export default async function CaseStudyPage(props: PageProps<'/work/[slug]'>) {
   return (
     <main className="case" id="top">
         <Link className="link-arrow case__back" href="/#work">
-          <span aria-hidden="true">←</span> All work
+          All work
         </Link>
 
         <header className="case__head">
@@ -77,7 +77,7 @@ export default async function CaseStudyPage(props: PageProps<'/work/[slug]'>) {
               )}
               {project.githubUrl && (
                 <a className="link-arrow" href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                  Source on GitHub <span aria-hidden="true">↗</span>
+                  Source on GitHub
                 </a>
               )}
             </div>
@@ -143,12 +143,12 @@ export default async function CaseStudyPage(props: PageProps<'/work/[slug]'>) {
 
         <nav className="case__next" aria-label="More work">
           <Link className="link-arrow" href="/#work">
-            <span aria-hidden="true">←</span> All work
+            All work
           </Link>
           <Link className="case__next-link" href={`/work/${next.id}`}>
             <span className="case__next-label">Next project</span>
             <span className="case__next-title">
-              {next.title} <span aria-hidden="true">→</span>
+              {next.title}
             </span>
           </Link>
         </nav>

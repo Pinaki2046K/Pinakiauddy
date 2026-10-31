@@ -1,5 +1,9 @@
+/* Hallmark · checked: 2026-10-31 · genre: editorial (inferred)
+ * floor: 0 FAIL · fixed: 13 (7a, 34, 39a, 48, 62, 63, 10, 11, 25, F7) · structural: 2 printed (42, 58)
+ * built: the project · redesign: polish · v2.0.0 */
+
 /* ============================================================
-   Pinaki Auddy · portfolio
+   Pinaki Auddy, portfolio
    Quiet, editorial and product-led: near-white ground, near-black ink,
    one oxblood accent on actions. One face, General Sans.
    ============================================================ */
@@ -12,7 +16,12 @@
   --muted: #5d5d5a;
   --accent: #7d0c14;
   --accent-hover: #5e0910;
-  --accent-ink: #ffffff;
+  --accent-ink: #fbf6f5;
+  --paper-bright: #fcfcfa;
+  --ok: #e3ede4;
+  --ok-ink: #2d5a34;
+  --scrim: rgb(20 20 20 / 0.5);
+  --off: #d9d9d4;
   --dark: #141414;
   --dark-ink: #f6f6f4;
   --dark-muted: #a8a8a3;
@@ -46,7 +55,8 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; background: var(-
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 /* Lenis drives scrolling once it starts; native smooth scrolling would fight it */
 html.lenis { scroll-behavior: auto; }
-html:has(dialog[open]) { overflow: hidden; }
+html, body { overflow-x: clip; }
+html:has(dialog[open]) { overflow: clip; }
 body {
   margin: 0;
   background: var(--bg);
@@ -98,7 +108,7 @@ p { text-wrap: pretty; }
   transition: transform var(--t-press) var(--ease-out), background-color var(--t-hover) ease, color var(--t-hover) ease;
 }
 .button:active { transform: scale(0.97); }
-.button:disabled { opacity: 0.7; cursor: progress; }
+.button:disabled { background: var(--off); color: var(--muted); cursor: progress; }
 .button--small { min-height: 2.5rem; padding: 0 1.1rem; font-size: var(--step-small); }
 .button--light { background: var(--dark-ink); color: var(--ink); }
 .link-arrow {
@@ -116,7 +126,7 @@ p { text-wrap: pretty; }
 .link-arrow span { transition: transform var(--t-hover) var(--ease-out); }
 @media (hover: hover) and (pointer: fine) {
   .button:hover { background: var(--accent-hover); }
-  .button--light:hover { background: #ffffff; }
+  .button--light:hover { background: var(--paper-bright); }
   .link-arrow:hover { text-decoration-color: currentColor; }
   .link-arrow:hover span { transform: translateX(3px); }
 }
@@ -241,11 +251,9 @@ textarea.field { resize: vertical; }
   width: 100%;
   height: auto;
   border-radius: 8px;
-  transition: transform 600ms var(--ease-out);
 }
 @media (hover: hover) and (pointer: fine) {
   .feature__media:hover .feature__frame { background: var(--surface-2); }
-  .feature__media:hover .feature__frame img { transform: scale(1.02); }
 }
 
 .feature__title { font-size: var(--step-head); font-weight: 700; line-height: 1.02; letter-spacing: -0.03em; }
@@ -267,14 +275,14 @@ textarea.field { resize: vertical; }
   font-size: var(--step-small);
   color: var(--muted);
 }
-.status--deployed { background: #e3ede4; color: #2d5a34; }
+.status--deployed { background: var(--ok); color: var(--ok-ink); }
 .feature__summary { margin-top: 1.25rem; max-width: 40ch; }
 .feature__stack { margin-top: 1rem; font-size: var(--step-small); color: var(--muted); }
 .feature__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.5rem; margin-top: 1.75rem; }
 
 /* ---------- case study page ---------- */
 .message { margin: 0; padding: 0; border: 0; color: var(--ink); background: var(--bg); }
-.message::backdrop { background: rgb(20 20 20 / 0.5); }
+.message::backdrop { background: var(--scrim); }
 .case {
   display: block;
   width: 100%;
@@ -308,7 +316,7 @@ textarea.field { resize: vertical; }
   margin-top: 2.5rem;
 }
 .case__text { grid-column: 1 / 8; font-size: var(--step-lead); line-height: 1.4; }
-.case__text p { max-width: 38ch; }
+.case__text p { max-width: 45ch; }
 .case__text p + p { margin-top: 1em; }
 .case__facts { grid-column: 9 / 13; display: grid; gap: 1.5rem; align-content: start; }
 .case__facts dt { font-size: var(--step-small); color: var(--muted); }
@@ -331,26 +339,16 @@ textarea.field { resize: vertical; }
 .story__row > :last-child { grid-column: 5 / 13; }
 .story__heading { font-size: var(--step-lead); font-weight: 700; letter-spacing: -0.01em; line-height: 1.25; }
 .story__lead { font-size: var(--step-lead); line-height: 1.45; max-width: 40em; }
-.story__decisions { display: grid; gap: 1rem; }
-.story__decisions li { padding: clamp(1.25rem, 2.5vw, 1.75rem); border-radius: var(--radius); background: var(--surface); }
+.story__decisions { display: grid; }
+.story__decisions li { padding-block: 1.25rem 1.5rem; border-top: 1px solid var(--surface-2); }
+.story__decisions li:first-child { padding-top: 0.25rem; border-top: 0; }
 .story__title { font-size: var(--step-body); font-weight: 700; }
 .story__decisions p { margin-top: 0.5rem; max-width: 60ch; }
 .story__outcome { display: grid; gap: 0.75rem; }
 .story__outcome li {
-  position: relative;
-  padding-left: 1.5rem;
   font-size: var(--step-lead);
   line-height: 1.4;
-}
-.story__outcome li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.6em;
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 999px;
-  background: var(--accent);
+  max-width: 40em;
 }
 @media (max-width: 760px) {
   .story__row > :first-child, .story__row > :last-child { grid-column: 1 / -1; }
@@ -369,10 +367,19 @@ textarea.field { resize: vertical; }
 }
 .case__next-link { display: grid; gap: 0.25rem; text-align: right; text-decoration: none; margin-left: auto; }
 .case__next-label { font-size: var(--step-small); color: var(--muted); }
-.case__next-title { font-size: var(--step-head); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; }
-.case__next-title span { display: inline-block; transition: transform var(--t-hover) var(--ease-out); }
+.case__next-title {
+  font-size: var(--step-head);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.18em;
+  transition: text-decoration-color var(--t-hover) ease;
+}
 @media (hover: hover) and (pointer: fine) {
-  .case__next-link:hover .case__next-title span { transform: translateX(6px); }
+  .case__next-link:hover .case__next-title { text-decoration-color: currentColor; }
 }
 
 /* ============================================================
@@ -400,12 +407,11 @@ textarea.field { resize: vertical; }
 .caps__media img {
   object-fit: cover;
   object-position: 0 0;
-  opacity: 0;
-  transform: scale(1.03);
 }
+.js .caps__media img { opacity: 0; transform: scale(1.03); }
 /* The new screen fades in over the old one, which stays fully visible underneath: no dimmed midpoint */
-.caps__media img.is-previous { z-index: 1; opacity: 1; transform: none; }
-.caps__media img.is-active {
+.js .caps__media img.is-previous { z-index: 1; opacity: 1; transform: none; }
+.js .caps__media img.is-active {
   z-index: 2;
   opacity: 1;
   transform: none;
@@ -431,27 +437,30 @@ textarea.field { resize: vertical; }
 @media (hover: hover) and (pointer: fine) {
   .caps__trigger:hover { color: var(--ink); }
 }
-.caps__detail { display: grid; grid-template-rows: 0fr; transition: grid-template-rows var(--t-collapse) var(--ease-out); }
+.caps__detail { display: grid; grid-template-rows: 1fr; }
+.js .caps__detail { grid-template-rows: 0fr; transition: grid-template-rows var(--t-collapse) var(--ease-out); }
 .caps__detail > div { overflow: hidden; }
 .caps__detail p {
-  max-width: 42ch;
+  max-width: 46ch;
   padding-bottom: 1rem;
+}
+.js .caps__detail p {
   opacity: 0;
   transform: translateY(-6px);
   transition: opacity 140ms ease, transform var(--t-collapse) var(--ease-out);
 }
 /* Opening is a touch slower than closing, and the text arrives just after the space opens */
-.caps__row.is-active .caps__detail { grid-template-rows: 1fr; transition-duration: var(--t-expand); }
-.caps__row.is-active .caps__detail p {
+.js .caps__row.is-active .caps__detail { grid-template-rows: 1fr; transition-duration: var(--t-expand); }
+.js .caps__row.is-active .caps__detail p {
   opacity: 1;
   transform: none;
   transition: opacity 240ms var(--ease-out) 60ms, transform var(--t-expand) var(--ease-out) 60ms;
 }
 @media (prefers-reduced-motion: reduce) {
   /* Keep the fades, drop the movement */
-  .caps__media img, .caps__media img.is-active { transform: none; transition: opacity 200ms ease; }
-  .caps__detail, .caps__row.is-active .caps__detail { transition: none; }
-  .caps__detail p, .caps__row.is-active .caps__detail p { transform: none; transition: opacity 200ms ease; }
+  .js .caps__media img, .js .caps__media img.is-active { transform: none; transition: opacity 200ms ease; }
+  .js .caps__detail, .js .caps__row.is-active .caps__detail { transition: none; }
+  .js .caps__detail p, .js .caps__row.is-active .caps__detail p { transform: none; transition: opacity 200ms ease; }
 }
 
 /* ============================================================
@@ -469,7 +478,7 @@ textarea.field { resize: vertical; }
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: -0.02em;
-  max-width: 24ch;
+  max-width: 28ch;
 }
 .about__para { margin-top: 1.25em; font-size: var(--step-lead); line-height: 1.5; max-width: 38em; }
 .about__lede + .about__para { margin-top: 1.75rem; }
@@ -477,7 +486,7 @@ textarea.field { resize: vertical; }
 .record { display: grid; column-gap: 3rem; row-gap: 2.5rem; }
 .record--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .record--three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.record > * { padding: clamp(1.25rem, 2.5vw, 2rem); border-radius: var(--radius); background: var(--surface); }
+.record > * { padding-top: 1.25rem; border-top: 1px solid var(--ink); }
 .record__head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
 .record__name { font-weight: 700; font-size: var(--step-body); }
 .record__date { font-size: var(--step-small); color: var(--muted); font-variant-numeric: tabular-nums; }
@@ -510,7 +519,7 @@ textarea.field { resize: vertical; }
 /* The address only ever breaks after the @ */
 .contact__email span { display: inline-block; white-space: nowrap; transition: color var(--t-hover) ease; }
 @media (hover: hover) and (pointer: fine) {
-  .contact__email:hover span { color: #ffffff; text-decoration: underline; text-decoration-thickness: 0.04em; text-underline-offset: 0.12em; }
+  .contact__email:hover span { color: var(--paper-bright); text-decoration: underline; text-decoration-thickness: 0.04em; text-underline-offset: 0.12em; }
 }
 .contact__foot {
   display: flex;
@@ -554,7 +563,7 @@ textarea.field { resize: vertical; }
 /* ============================================================
    Footer
    ============================================================ */
-.footer-wrap { background: var(--dark); }
+.footer-wrap { background: var(--dark); color: var(--dark-ink); }
 .footer {
   display: flex;
   justify-content: space-between;
